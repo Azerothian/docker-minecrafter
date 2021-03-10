@@ -47,15 +47,15 @@ RUN apk --no-cache add \
         boost-filesystem \
         boost-program_options \
         shadow \
-        dcron
+        dcron \
+        libcap
 
 
 ADD crontab /etc/cron.d/mapcrafter-cron
 ADD render.sh /render
 ADD render.conf /config/render.conf
+ADD entrypoint.sh /
 
-RUN chmod 0644 /etc/cron.d/mapcrafter-cron; useradd service; chmod 0777 /render
+RUN chmod 0644 /etc/cron.d/mapcrafter-cron; useradd service; chmod 0777 /render; chmod +x entrypoint.sh; 
 
-# USER service
-
-CMD crond -f
+ENTRYPOINT /entrypoint.sh
