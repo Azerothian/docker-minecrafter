@@ -18,7 +18,7 @@ RUN apk add \
         boost-dev
 
 RUN mkdir /git && cd /git && \
-    git clone --single-branch --branch world116 https://github.com/miclav/mapcrafter.git
+    git clone --single-branch --branch world117 https://github.com/miclav/mapcrafter.git
 # Build mapcrafter from source
 RUN cd /git/mapcrafter && \
     mkdir build && cd build && \
